@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Gapminder Data Analysis",
+    "section": "",
+    "text": "This website presents an analysis of the Gapminder dataset, focusing on life expectancy, GDP per capita, and population trends across the world.\n\n\n\nLife Expectancy and GDP per Capita\nLife Expectancy and Population\nCountry Analysis\n\n\nlibrary(ggplot2)\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(readr)\n\n\ngapminder &lt;- read_csv(\"gapminder.csv\")\n\nRows: 1704 Columns: 6\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (2): country, continent\ndbl (4): year, life_expectancy, population_millions, gdp_per_capita\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\ngapminder &lt;- gapminder %&gt;% mutate(country = as.factor(country), continent = as.factor(continent))\n\n\n\n\n\nggplot(gapminder, aes(x = year, y = life_expectancy, color = continent)) + \n  geom_line() + \n  theme_minimal() + \n  labs(title = \"Life Expectancy Over Time by Continent\",\n       x = \"Year\",\n       y = \"Life Expectancy\")\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(gapminder, aes(x = population_millions, y = life_expectancy, color = continent)) + \n  geom_point(alpha = 0.6) + \n  theme_minimal() + \n  labs(title = \"Life Expectancy vs Population\",\n       x = \"Population (millions)\",\n       y = \"Life Expectancy\")\n\n\n\n\n\n\n\n\n\n\n\n\nspecific_country &lt;- \"United States\"\nggplot(gapminder %&gt;% filter(country == specific_country), \n       aes(x = year)) +\n  geom_line(aes(y = life_expectancy, color = \"Life Expectancy\")) +\n  geom_line(aes(y = gdp_per_capita / 1000, color = \"GDP per Capita (thousands)\")) +\n  geom_line(aes(y = population_millions / 10, color = \"Population (tens of millions)\")) +\n  theme_minimal() +\n  labs(title = paste(\"Life Expectancy, GDP, and Population Over Time in\", specific_country),\n       x = \"Year\",\n       y = \"Value (scaled)\",\n       color = \"Legend\")"
+  },
+  {
+    "objectID": "index.html#explore-the-data",
+    "href": "index.html#explore-the-data",
+    "title": "Gapminder Data Analysis",
+    "section": "",
+    "text": "Life Expectancy and GDP per Capita\nLife Expectancy and Population\nCountry Analysis\n\n\nlibrary(ggplot2)\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\nlibrary(readr)\n\n\ngapminder &lt;- read_csv(\"gapminder.csv\")\n\nRows: 1704 Columns: 6\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (2): country, continent\ndbl (4): year, life_expectancy, population_millions, gdp_per_capita\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\ngapminder &lt;- gapminder %&gt;% mutate(country = as.factor(country), continent = as.factor(continent))"
+  },
+  {
+    "objectID": "index.html#life-expectancy-and-gdp-per-capita-over-time",
+    "href": "index.html#life-expectancy-and-gdp-per-capita-over-time",
+    "title": "Gapminder Data Analysis",
+    "section": "",
+    "text": "ggplot(gapminder, aes(x = year, y = life_expectancy, color = continent)) + \n  geom_line() + \n  theme_minimal() + \n  labs(title = \"Life Expectancy Over Time by Continent\",\n       x = \"Year\",\n       y = \"Life Expectancy\")"
+  },
+  {
+    "objectID": "index.html#life-expectancy-and-population",
+    "href": "index.html#life-expectancy-and-population",
+    "title": "Gapminder Data Analysis",
+    "section": "",
+    "text": "ggplot(gapminder, aes(x = population_millions, y = life_expectancy, color = continent)) + \n  geom_point(alpha = 0.6) + \n  theme_minimal() + \n  labs(title = \"Life Expectancy vs Population\",\n       x = \"Population (millions)\",\n       y = \"Life Expectancy\")"
+  },
+  {
+    "objectID": "index.html#country-analysis",
+    "href": "index.html#country-analysis",
+    "title": "Gapminder Data Analysis",
+    "section": "",
+    "text": "specific_country &lt;- \"United States\"\nggplot(gapminder %&gt;% filter(country == specific_country), \n       aes(x = year)) +\n  geom_line(aes(y = life_expectancy, color = \"Life Expectancy\")) +\n  geom_line(aes(y = gdp_per_capita / 1000, color = \"GDP per Capita (thousands)\")) +\n  geom_line(aes(y = population_millions / 10, color = \"Population (tens of millions)\")) +\n  theme_minimal() +\n  labs(title = paste(\"Life Expectancy, GDP, and Population Over Time in\", specific_country),\n       x = \"Year\",\n       y = \"Value (scaled)\",\n       color = \"Legend\")"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  }
+]
